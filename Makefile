@@ -14,9 +14,13 @@ BUILD_DIR = build
 
 # Исходные коды
 # Исходные коды на языке C
-C_SOURCES = \
-src/main.c \
-src/system_stm32f0xx.c
+C_SOURCES = $(wildcard ./src/*.c) \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_cortex.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_flash.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_gpio.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_exti.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_rcc_ex.c
 
 # Исходные коды на языке ассемблер
 ASM_SOURCES = \
@@ -69,8 +73,9 @@ AS_INCLUDES =
 # Для C
 C_INCLUDES =  \
 -Isrc \
+-Ilib/cmsis_core/Include \
 -Ilib/cmsis_device_f0/Include \
--Ilib/cmsis_core/Include
+-Ilib/stm32f0xx_hal_driver/Inc
 
 # Итоговые флаги gcc
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -82,7 +87,7 @@ CFLAGS += -g -gdwarf-2
 endif
 
 # Создание информации о зависимостях
-CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
+CFLAGS += -std=c11 -MMD -MP -MF"$(@:%.o=%.d)"
 
 # Флаги LDFLAGS
 # Скрипт компоновщика
@@ -130,6 +135,9 @@ clean:
 # Прошивка МК
 flash:
 	openocd -f interface/stlink.cfg -f target/stm32f0x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+
+debug:
+	echo TODO
 
 # Зависимости
 -include $(wildcard $(BUILD_DIR)/*.d)
