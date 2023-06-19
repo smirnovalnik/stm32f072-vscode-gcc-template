@@ -7,7 +7,7 @@
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "arm-none-eabi-gcc",
+            "compilerPath": "C:\\ProgramData\\chocolatey\\bin\\arm-none-eabi-gcc",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "gcc-arm"
@@ -31,7 +31,7 @@
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "/usr/local/bin/arm-none-eabi-gcc",
+            "compilerPath": "/opt/homebrew/bin/arm-none-eabi-gcc",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "gcc-arm"
