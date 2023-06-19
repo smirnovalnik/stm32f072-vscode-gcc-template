@@ -3,11 +3,26 @@
 Установка всех компонентов происходит в командной строке.
 Последовательность действий зависит от операционной системы.
 
-Для работы потребуется кросс-компилятор `arm-none-eabi-gcc`, утилита сборки `make`, отладчик `openocd` и
-текстовый редактор `Visual Studio Code` с расширениями.
+Для работы потребуется кросс-компилятор `arm-none-eabi-gcc`, утилита сборки `make`, отладчик `openocd`,
+система контроля версия `git` и текстовый редактор `Visual Studio Code` с расширениями.
 
-В качестве текстого редактора можно использовать другой, например `Neovim`, `Notepad++`,
-но наличие расширения для графической отладки следует проверять самостоятельно
+Пример использует библиотеки [CMSIS](https://github.com/STMicroelectronics/cmsis_core),
+[CMSIS Device F0](https://github.com/STMicroelectronics/cmsis_device_f0) и 
+[HAL F0](https://github.com/STMicroelectronics/stm32f0xx_hal_driver).
+
+## Назначение директорий и файлов
+
+`.vscode/` - директория с настройка редактора `Visual Studio Code`
+`.git/` - директория системы контроля версия `git`
+`lib/` - директория с внешними библиотеками
+`src/` - исходные и заговоловочные файлы проекта
+`build/` - временная директория с результатами сборки
+`.gitignore` - файлы и директории, исключенные из системы контроля версий
+`.gitmodules` - подмодули `git`
+`Makefile` - файл сборки
+`README.md` - это описание в формате `Markdown`
+`STM32F072RBTx_FLASH.ld` - сценарий компоновщика
+`STM32F072x.svd` - описание структуры МК (регистры специальных функций) для отладчика 
 
 ## Установка компонентов
 
@@ -65,6 +80,7 @@
   sudo apt install arm-none-eabi-gcc
   sudo apt install make
   sudo apt install openocd
+  sudo apt install git
    ```
 
   Проверка правильности установки:
@@ -73,6 +89,7 @@
   arm-none-eabi-gcc --version
   make --version
   openocd --version
+  git --version
   ```
 
   Каждая команда должна вернуть свою версию.
@@ -95,6 +112,7 @@
   arm-none-eabi-gcc --version
   make --version
   openocd --version
+  git --version
   ```
 
   Каждая команда должна вернуть свою версию.
@@ -118,6 +136,15 @@
 - Для подсветки синтаксиса скрипта компоновщика - [LinkerScript](https://marketplace.visualstudio.com/items?itemName=ZixuanWang.linkerscript)
 
 - Для подсветки map файлов - [GNU Linker Map files](https://marketplace.visualstudio.com/items?itemName=trond-snekvik.gnu-mapfiles)
+
+## Клониирование репозитория
+
+Проект содержит подмодули с библиотекам от ST.
+Для клонирования выполните следующу команду.
+
+```bash
+git clone --recurse-submodules -j8 https://github.com/smirnovalnik/stm32f072_vscode_gcc_template.git
+```
 
 ## Работа с шаблоном
 
