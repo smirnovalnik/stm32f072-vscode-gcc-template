@@ -62,8 +62,8 @@
 - Установка в системах с пакетным менеджером `apt`:
 
   ```shell
-  sudo apt install bin-utils
   sudo apt install arm-none-eabi-gcc
+  sudo apt install make
   sudo apt install openocd
    ```
 
