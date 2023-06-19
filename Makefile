@@ -87,7 +87,7 @@ CFLAGS += -g -gdwarf-2
 endif
 
 # Создание информации о зависимостях
-CFLAGS += -std=c11 -MMD -MP -MF"$(@:%.o=%.d)"
+CFLAGS += -std=c17 -MMD -MP -MF"$(@:%.o=%.d)"
 
 # Флаги LDFLAGS
 # Скрипт компоновщика
@@ -135,9 +135,6 @@ clean:
 # Прошивка МК
 flash:
 	openocd -f interface/stlink.cfg -f target/stm32f0x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
-
-debug:
-	echo TODO
 
 # Зависимости
 -include $(wildcard $(BUILD_DIR)/*.d)
