@@ -16,7 +16,7 @@
 /******************************************************************************/
 
 /**
-  * \brief  This function handles NMI exception.
+  * \brief  Подпрограмма обработчик немаскируемого прерываний NMI.
   * \param  нет
   * \retval нет
   */
@@ -25,19 +25,18 @@ void NMI_Handler(void)
 }
 
 /**
-  * \brief  This function handles Hard Fault exception.
+  * \brief  Подпрограмма обработчик аппаратной ошибки Hard Fault.
   * \param  нет
   * \retval нет
   */
 void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
   while (1);
 }
 
 
 /**
-  * \brief  This function handles SVCall exception.
+  * \brief  Подпрограмма обработчик вызова супервизора SVCall.
   * \param  нет
   * \retval нет
   */
@@ -47,7 +46,7 @@ void SVC_Handler(void)
 
 
 /**
-  * \brief  This function handles PendSVC exception.
+  * \brief  Подпрограмма обработчик отложенного вызова супервизора PendSVC.
   * \param  нет
   * \retval нет
   */
@@ -56,7 +55,7 @@ void PendSV_Handler(void)
 }
 
 /**
-  * \brief  This function handles SysTick Handler.
+  * \brief  Подпрограмма обработчик таймера SysTick.
   * \param  нет
   * \retval нет
   */
@@ -65,15 +64,16 @@ void SysTick_Handler(void)
     HAL_IncTick();
 }
 
-/******************************************************************************/
-/*                 STM32F0xx Peripherals Interrupt Handlers                   */
-/*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
-/*  available peripheral interrupt handler's name please refer to the startup */
-/*  file (startup_stm32f0xx.s).                                               */
-/******************************************************************************/
+/*
+  Обработчики прерываний можно размещать в любом удобном месте проекта,
+  так как компоновщик ищет обработчик по всем файлам по имени функции.
+  Если есть необходимость, то все обработчики можно размесить в одном файле,
+  например в этом.
+  Имена обработчиков пререываний можно найти в файле startup_stm32f072xb.s
+*/
 
 /**
-  * \brief  This function handles PPP interrupt request.
+  * \brief  Подпрограмма обработчик прерывания периферийного модуля
   * \param  нет
   * \retval нет
   */
