@@ -1,74 +1,45 @@
 /**
   ******************************************************************************
-  * @file    stm32f0xx_it.c
-  * @author  MCD Application Team
-  * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and
-  *          peripherals interrupt service routine.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
+  * \file    stm32f0xx_it.c
+  * \author  Александр Смирнов
+  * \version 1.0.0
+  * \date    20.06.2023
+  * \brief   Шаблон файла с подрограммами обработчиками исключений и
+  *          прерываний.
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx_it.h"
 #include "stm32f0xx_hal.h"
 
-/** @addtogroup STM32F0xx_HAL_Examples
-  * @{
-  */
-
-/** @addtogroup GPIO_IOToggle
-  * @{
-  */
-
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
-
 /******************************************************************************/
-/*            Cortex-M0 Processor Exceptions Handlers                         */
+/*             Обрабочики исключений (exceptions) Cortex-M0                   */
 /******************************************************************************/
 
 /**
-  * @brief  This function handles NMI exception.
-  * @param  None
-  * @retval None
+  * \brief  This function handles NMI exception.
+  * \param  нет
+  * \retval нет
   */
 void NMI_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles Hard Fault exception.
-  * @param  None
-  * @retval None
+  * \brief  This function handles Hard Fault exception.
+  * \param  нет
+  * \retval нет
   */
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+  while (1);
 }
 
 
 /**
-  * @brief  This function handles SVCall exception.
-  * @param  None
-  * @retval None
+  * \brief  This function handles SVCall exception.
+  * \param  нет
+  * \retval нет
   */
 void SVC_Handler(void)
 {
@@ -76,22 +47,22 @@ void SVC_Handler(void)
 
 
 /**
-  * @brief  This function handles PendSVC exception.
-  * @param  None
-  * @retval None
+  * \brief  This function handles PendSVC exception.
+  * \param  нет
+  * \retval нет
   */
 void PendSV_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
+  * \brief  This function handles SysTick Handler.
+  * \param  нет
+  * \retval нет
   */
 void SysTick_Handler(void)
 {
-  HAL_IncTick();
+    HAL_IncTick();
 }
 
 /******************************************************************************/
@@ -102,19 +73,10 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
+  * \brief  This function handles PPP interrupt request.
+  * \param  нет
+  * \retval нет
   */
 /*void PPP_IRQHandler(void)
 {
 }*/
-
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */

@@ -7,22 +7,33 @@
 система контроля версия `git` и текстовый редактор `Visual Studio Code` с расширениями.
 
 Пример использует библиотеки [CMSIS](https://github.com/STMicroelectronics/cmsis_core),
-[CMSIS Device F0](https://github.com/STMicroelectronics/cmsis_device_f0) и 
+[CMSIS Device F0](https://github.com/STMicroelectronics/cmsis_device_f0) и
 [HAL F0](https://github.com/STMicroelectronics/stm32f0xx_hal_driver).
 
 ## Назначение директорий и файлов
 
 - `.vscode/` - директория с настройка редактора `Visual Studio Code`
+  - `c_cpp_properties.json` - настройки плагина `C/C++ for Visual Studio Code`
+  - `launch.json` - настройки конфигураций отладки
+  - `settings.json` - локальные настройки `Visual Studio Code`
 - `.git/` - директория системы контроля версия `git`
 - `lib/` - директория с внешними библиотеками
+  - `cmsis_core/` - директория с библиотекой поддержки ядер `Cortex-M`
+  - `cmsis_device_f0/` - директория с библиотекой описания регистров микроконтроллеров `STM32F0xx`
+  - `stm32f0xx_hal_driver/` - директория с библиотекой драйверов `HAL` для микроконтроллеров `STM32F0xx`
 - `src/` - исходные и заговоловочные файлы проекта
+  - `main.c` - исходный файл с функцией `main`
+  - `startup_stm32f072xb.s` - файл startup
+  - `stm32f0xx_hal_conf.h` - настройки `HAL`
+  - `stm32f0xx_it.c` - подпрограммы обработчики прерываний
+  - `system_stm32f0xx.c` - шаблон с системными настройками микроконтроллера (тактирование, Flash)
 - `build/` - временная директория с результатами сборки
 - `.gitignore` - файлы и директории, исключенные из системы контроля версий
 - `.gitmodules` - подмодули `git`
 - `Makefile` - файл сборки
 - `README.md` - это описание в формате `Markdown`
 - `STM32F072RBTx_FLASH.ld` - сценарий компоновщика
-- `STM32F072x.svd` - описание структуры МК (регистры специальных функций) для отладчика 
+- `STM32F072x.svd` - описание структуры МК (регистры специальных функций) для отладчика
 
 ## Установка компонентов
 
@@ -58,6 +69,7 @@
     choco install gcc-arm-embedded
     choco install make
     choco install openocd
+    choco install git
     ```
 
   Проверка правильности установки:
@@ -140,7 +152,8 @@
 ## Клониирование репозитория
 
 Проект содержит подмодули с библиотекам от ST.
-Для клонирования выполните следующу команду.
+
+Для клонирования с подмодулями выполните следующу команду
 
 ```bash
 git clone --recurse-submodules -j8 https://github.com/smirnovalnik/stm32f072_vscode_gcc_template.git

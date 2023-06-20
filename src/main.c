@@ -25,9 +25,6 @@ int main(void)
     /* Инициализация библиотеки HAL */
     HAL_Init();
 
-    /* Configure the system clock to 48 MHz */
-    //SystemClock_Config();
-
     /* Включение тактирования модулей */
     __HAL_RCC_GPIOA_CLK_ENABLE(); /* Включение тактирования порта A */
     __HAL_RCC_GPIOC_CLK_ENABLE(); /* Включение тактирования порта C */

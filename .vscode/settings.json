@@ -1,8 +1,10 @@
 {
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#00a2ff",
+        "titleBar.activeBackground": "#9500ff",
         "titleBar.activeForeground": "#000000",
     },
 }
