@@ -1,67 +1,15 @@
 /**
   ******************************************************************************
-  * @file    system_stm32f0xx.c
-  * @author  MCD Application Team
-  * @brief   CMSIS Cortex-M0 Device Peripheral Access Layer System Source File.
-  *
-  * 1. This file provides two functions and one global variable to be called from
-  *    user application:
-  *      - SystemInit(): This function is called at startup just after reset and
-  *                      before branch to main program. This call is made inside
-  *                      the "startup_stm32f0xx.s" file.
-  *
-  *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
-  *                                  by the user application to setup the SysTick
-  *                                  timer or configure other parameters.
-  *
-  *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
-  *                                 be called whenever the core clock is changed
-  *                                 during program execution.
-  *
-  *
+  * \file    system_stm32f0xx.c
+  * \author  Александр Смирнов
+  * \version 1.0.0
+  * \date    20.06.2023
+  * \brief   Шаблон файла системный настроек.
   ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
-
-/** @addtogroup CMSIS
-  * @{
-  */
-
-/** @addtogroup stm32f0xx_system
-  * @{
-  */
-
-/** @addtogroup STM32F0xx_System_Private_Includes
-  * @{
   */
 
 #include "stm32f0xx.h"
 
-/**
-  * @}
-  */
-
-/** @addtogroup STM32F0xx_System_Private_TypesDefinitions
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @addtogroup STM32F0xx_System_Private_Defines
-  * @{
-  */
 #if !defined  (HSE_VALUE)
   #define HSE_VALUE    ((uint32_t)8000000) /*!< Default value of the External oscillator in Hz.
                                                 This value can be provided and adapted by the user application. */
@@ -76,54 +24,24 @@
 #define HSI48_VALUE    ((uint32_t)48000000) /*!< Default value of the HSI48 Internal oscillator in Hz.
                                                  This value can be provided and adapted by the user application. */
 #endif /* HSI48_VALUE */
-/**
-  * @}
-  */
 
-/** @addtogroup STM32F0xx_System_Private_Macros
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @addtogroup STM32F0xx_System_Private_Variables
-  * @{
-  */
-  /* This variable is updated in three ways:
-      1) by calling CMSIS function SystemCoreClockUpdate()
-      2) by calling HAL API function HAL_RCC_GetHCLKFreq()
-      3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency
-         Note: If you use this function to configure the system clock; then there
-               is no need to call the 2 first functions listed above, since SystemCoreClock
-               variable is updated automatically.
-  */
+/* This variable is updated in three ways:
+    1) by calling CMSIS function SystemCoreClockUpdate()
+    2) by calling HAL API function HAL_RCC_GetHCLKFreq()
+    3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency
+        Note: If you use this function to configure the system clock; then there
+              is no need to call the 2 first functions listed above, since SystemCoreClock
+              variable is updated automatically.
+*/
 uint32_t SystemCoreClock = 8000000;
 
 const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
 const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
 
 /**
-  * @}
-  */
-
-/** @addtogroup STM32F0xx_System_Private_FunctionPrototypes
-  * @{
-  */
-
-/**
-  * @}
-  */
-
-/** @addtogroup STM32F0xx_System_Private_Functions
-  * @{
-  */
-
-/**
-  * @brief  Setup the microcontroller system
-  * @param  None
-  * @retval None
+  * \brief  Setup the microcontroller system
+  * \param  None
+  * \retval None
   */
 void SystemInit(void)
 {
@@ -136,16 +54,16 @@ void SystemInit(void)
 }
 
 /**
-   * @brief  Update SystemCoreClock variable according to Clock Register Values.
+   * \brief  Update SystemCoreClock variable according to Clock Register Values.
   *         The SystemCoreClock variable contains the core clock (HCLK), it can
   *         be used by the user application to setup the SysTick timer or configure
   *         other parameters.
   *
-  * @note   Each time the core clock (HCLK) changes, this function must be called
+  * \note   Each time the core clock (HCLK) changes, this function must be called
   *         to update SystemCoreClock variable value. Otherwise, any configuration
   *         based on this variable will be incorrect.
   *
-  * @note   - The system frequency computed by this function is not the real
+  * \note   - The system frequency computed by this function is not the real
   *           frequency in the chip. It is calculated based on the predefined
   *           constant and the selected clock source:
   *
@@ -168,8 +86,8 @@ void SystemInit(void)
   *         - The result of this function could be not correct when using fractional
   *           value for HSE crystal.
   *
-  * @param  None
-  * @retval None
+  * \param  None
+  * \retval None
   */
 void SystemCoreClockUpdate (void)
 {
@@ -230,18 +148,3 @@ void SystemCoreClockUpdate (void)
   /* HCLK clock frequency */
   SystemCoreClock >>= tmp;
 }
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

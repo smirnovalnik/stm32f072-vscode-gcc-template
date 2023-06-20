@@ -19,7 +19,7 @@
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "arm-none-eabi-gcc",
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "gcc-arm"
