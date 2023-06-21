@@ -147,6 +147,7 @@ $(BUILD_DIR):
 print-%: ; @echo $*=$($*)
 
 # Очистка директории с результатом построения
+.PHONY: clean
 clean:
 	-@$(RM) $(BUILD_DIR)
 
