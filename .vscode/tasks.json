@@ -4,7 +4,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "make -s -j 8 all",
+            "command": "make -s -j all",
             "group": {
                 "kind": "build",
                 "isDefault": true

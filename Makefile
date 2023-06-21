@@ -4,9 +4,9 @@ TARGET = learning_stand
 
 # Переменные сборки
 # Включить отладочную информацию или нет
-DEBUG = 1
+DEBUG ?= 1
 # Уровень оптимизации
-OPT = -O0
+OPT ?= -O0
 
 # Инструменты
 # Префикс бинарников
@@ -117,15 +117,18 @@ vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
 # Компиляция исходных файлов на языке C
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
-	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@echo Compiling $(notdir $< )
+	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 # Компиляция исходных файлов на языке ассемблер
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
-	$(AS) -c $(CFLAGS) $< -o $@
+	@echo Assembling $(notdir $< )
+	@$(AS) -c $(CFLAGS) $< -o $@
 
 # Компоновка (создание elf файла)
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	@echo Linking
+	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	$(SZ) $@
 
 # Преобразование elf файл в hex
