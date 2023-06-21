@@ -138,7 +138,7 @@ clean:
 	-rm -fR $(BUILD_DIR)
 
 # Прошивка МК
-flash:
+download:
 	openocd -f interface/stlink.cfg -f target/stm32f0x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
 # Зависимости
