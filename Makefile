@@ -130,12 +130,13 @@ $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@
 
+# Создание директории для построения
 $(BUILD_DIR):
-	mkdir $@
+	-mkdir $@
 
 # Очистка директории с результатом построения
 clean:
-	-rm -fR $(BUILD_DIR)
+	-rm -rf $(BUILD_DIR)
 
 # Прошивка МК
 download:

@@ -15,6 +15,7 @@
 - `.vscode/` - директория с настройка редактора `Visual Studio Code`
   - `c_cpp_properties.json` - настройки плагина `C/C++ for Visual Studio Code`
   - `launch.json` - настройки конфигураций отладки
+  - `tasks.json` - настройки конфигураций сборки и загрузки
   - `settings.json` - локальные настройки `Visual Studio Code`
 - `.git/` - директория системы контроля версия `git`
 - `lib/` - директория с внешними библиотеками
@@ -166,7 +167,7 @@
 git clone --recurse-submodules -j8 https://github.com/smirnovalnik/stm32f072_vscode_gcc_template.git
 ```
 
-## Работа с шаблоном
+## Работа с проектом в командной строке
 
 Сборка проекта:
 
@@ -183,10 +184,14 @@ make clean
 Загрузка образа в МК:
 
 ```bash
-make flash
+make download
 ```
 
 ![](./img/vscode_build_flash.gif)
+
+## Работа с проектом через `Visual Studio Code`
+
+
 
 ## Отладка в `Visual Studio Code`
 
