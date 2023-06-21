@@ -1,5 +1,5 @@
 
-# Цель
+# Цель (название образа)
 TARGET = learning_stand
 
 # Переменные сборки
@@ -55,7 +55,7 @@ FPU =
 # float-abi
 FLOAT-ABI =
 
-# МК
+# Параметры центрального процессора
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
 # Подключение макроопределений для gcc
@@ -63,7 +63,7 @@ MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 AS_DEFS =
 
 # Для C
-C_DEFS =  \
+C_DEFS = \
 -DSTM32F072xB
 
 # Подключение заголовочных файлов
@@ -71,7 +71,7 @@ C_DEFS =  \
 AS_INCLUDES =
 
 # Для C
-C_INCLUDES =  \
+C_INCLUDES = \
 -Isrc \
 -Ilib/cmsis_core/Include \
 -Ilib/cmsis_device_f0/Include \
@@ -109,19 +109,24 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
+# Компиляция исходных файлов на языке C
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
+# Компиляция исходных файлов на языке ассемблер
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	$(AS) -c $(CFLAGS) $< -o $@
 
+# Компоновка (создание elf файла)
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
 	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	$(SZ) $@
 
+# Преобразование elf файл в hex
 $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(HEX) $< $@
 
+# Преобразование elf файл в bin
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@
 
