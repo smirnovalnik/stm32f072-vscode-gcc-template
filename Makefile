@@ -8,24 +8,7 @@ DEBUG = 1
 # Уровень оптимизации
 OPT = -O0
 
-# Пути
-# Директория с результатом построения
-BUILD_DIR = build
-
-# Исходные коды
-# Исходные коды на языке C
-C_SOURCES = $(wildcard ./src/*.c) \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal.c \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_cortex.c \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_flash.c \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_gpio.c \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_exti.c \
-./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_rcc_ex.c
-
-# Исходные коды на языке ассемблер
-ASM_SOURCES = \
-src/startup_stm32f072xb.s
-
+# Инструменты
 # Префикс бинарников
 PREFIX = arm-none-eabi-
 # Путь к бинарникам gcc компилятора может быть определен при вызове через переменную GCC_PATH ($ make GCC_PATH=xxx)
@@ -43,6 +26,29 @@ SZ = $(PREFIX)size
 endif
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
+
+RM = rm -fR
+ifeq ($(OS),Windows_NT)
+  RM = del /q
+endif
+
+# Пути
+# Директория с результатом построения
+BUILD_DIR = build
+
+# Исходные коды
+# Исходные коды на языке C
+C_SOURCES = $(wildcard ./src/*.c) \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_cortex.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_flash.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_gpio.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_exti.c \
+./lib/stm32f0xx_hal_driver/Src/stm32f0xx_hal_rcc_ex.c
+
+# Исходные коды на языке ассемблер
+ASM_SOURCES = \
+src/startup_stm32f072xb.s
 
 # Флаги CFLAGS
 # Выбор центрального процессора
@@ -134,9 +140,12 @@ $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 $(BUILD_DIR):
 	-mkdir $@
 
+# Печать переменной из Makefile
+print-%: ; @echo $*=$($*)
+
 # Очистка директории с результатом построения
 clean:
-	-rm -rf $(BUILD_DIR)
+	-@$(RM) $(BUILD_DIR)
 
 # Прошивка МК
 download:
