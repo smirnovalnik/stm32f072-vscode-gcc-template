@@ -60,6 +60,7 @@ int main(void)
 }
 
 #ifdef USE_FULL_ASSERT
+#include <stdio.h>
 /**
   * \brief  Вызывается когда произошла ошибка assert
   *         в библиотеке HAL. Assert включается в stm32f0xx_hal_conf.h
@@ -69,7 +70,7 @@ int main(void)
   */
 void assert_failed(uint8_t *file, uint32_t line)
 {
-    printf("Wrong parameters value: file %s on line %d", file, line)
+    printf("Wrong parameters value: file %s on line %lu", file, line);
 
     while (1);
 }
