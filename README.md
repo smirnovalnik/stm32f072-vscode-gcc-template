@@ -191,10 +191,6 @@ make download
 
 ![](./img/vscode_build_flash.gif)
 
-## Работа с проектом через `Visual Studio Code`
-
-
-
 ## Отладка в `Visual Studio Code`
 
 ![](./img/vscode_debug.gif)
