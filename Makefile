@@ -59,7 +59,8 @@ CPU = -mcpu=cortex-m0
 # Отсутсвует для Cortex-M0/M0+/M3
 FPU =
 
-# float-abi
+# ABI для чисел плавающей запятой
+# soft, softfp или hard
 FLOAT-ABI =
 
 # Параметры центрального процессора
