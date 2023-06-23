@@ -145,7 +145,7 @@
 
 - Загрузить и установить с сайта версию [Visual Studio Code](https://code.visualstudio.com/) в соответствие с вашей операционной системой.
 
-- Установить расширения можно экспортировав [профиль](https://vscode.dev/profile/github/d154b188761da254148fd884e56f8c8d) или установить следующие расширения (extensions) вручную:
+- Установить расширения можно экспортировав [профиль](https://vscode.dev/profile/github/2638de19aacad3f38058ccb77d4f417e) или установить следующие расширения (extensions) вручную:
 
   - Для работы с кодом на языке C/C++ - [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
@@ -156,6 +156,8 @@
   - Для подсветки синтаксиса скрипта компоновщика - [LinkerScript](https://marketplace.visualstudio.com/items?itemName=ZixuanWang.linkerscript)
 
   - Для подсветки map файлов - [GNU Linker Map files](https://marketplace.visualstudio.com/items?itemName=trond-snekvik.gnu-mapfiles)
+
+  - Для проверки `Markdown` файлов - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 
   - Для работы с последовательным портом - [Serial Monitor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
 
@@ -189,8 +191,8 @@ make clean
 make download
 ```
 
-![](./img/vscode_build_flash.gif)
+![Build Download](./img/vscode_build_download.gif)
 
 ## Отладка в `Visual Studio Code`
 
-![](./img/vscode_debug.gif)
+![Debug](./img/vscode_debug.gif)
