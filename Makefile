@@ -1,4 +1,4 @@
-.PHONY: clean, download
+.PHONY: clean download
 
 # Цель (название образа)
 TARGET = learning_stand
