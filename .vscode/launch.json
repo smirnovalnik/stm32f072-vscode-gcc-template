@@ -18,15 +18,6 @@
                 "interface/stlink.cfg",
                 "target/stm32f0x.cfg"
             ],
-            "swoConfig": {
-                "enabled": true,
-                "cpuFrequency": 8000000,
-                "swoFrequency": 2000000,
-                "source": "probe",
-                "decoders": [
-                    { "type": "console", "label": "ITM", "port": 0 }
-                ]
-            }
         }
     ]
 }

@@ -9,4 +9,8 @@
         "titleBar.activeBackground": "#9500ff",
         "titleBar.activeForeground": "#000000",
     },
+    "files.associations": {
+        "*.h": "c",
+        "*.c": "c",
+    },
 }
