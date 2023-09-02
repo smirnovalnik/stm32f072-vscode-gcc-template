@@ -1,5 +1,3 @@
-.PHONY: clean download
-
 # Цель (название образа)
 TARGET = learning_stand
 
@@ -149,10 +147,12 @@ $(BUILD_DIR):
 print-%: ; @echo $*=$($*)
 
 # Очистка директории с результатом построения
+.PHONY: clean
 clean:
 	-@$(RM) $(BUILD_DIR)
 
 # Прошивка МК
+.PHONY: download
 download:
 	openocd -f interface/stlink.cfg -f target/stm32f0x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
